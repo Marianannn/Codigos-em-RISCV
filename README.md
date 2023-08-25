@@ -5,6 +5,15 @@ Aqui eu só reuni os códigos feitos por mim na matéria Fundamentos da Arquitet
 >
 > Há algumas questões as quais o código está **incompleto**. Indicarei-as com !!!
 
+### Dicas para mandar arquivo no MOJ
+> Na hora de criar um arquivo, colocar a extensão **.riscv** no final
+>
+> **Não esquecer** de colocar **\n** nos prints
+>
+> Checar se a saída requerida possui **ponto final ou não**
+>
+> **Erro TLE - time limit exceeded** - significa que seu código não rodou em um tempo requerido pelo moj, ele demorou mais do que deveria
+
 ## Trabalho 01
 **[Hello World](https://github.com/Marianannn/Codigos-em-RISCV/blob/main/Trabalho-01/helloWorld.riscv)**
 
