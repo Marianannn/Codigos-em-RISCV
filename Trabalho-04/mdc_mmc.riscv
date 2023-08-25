@@ -1,0 +1,58 @@
+.data
+str:
+	.string "\n"
+invalido:
+	.string "Entrada invalida.\n"
+
+.text
+
+main:
+	addi s1, zero, 2
+	li a7, 5
+	ecall
+	mv t0, a0
+	mv s5, t0
+	
+	li a7, 5
+	ecall
+	mv t1, a0
+	mv s4, t1
+	
+	blt t0, s1, naopode
+	blt t1, s1, naopode
+	
+	jal mdc
+	jal mmc
+	
+naopode: 
+	li a7, 4
+	la a0, invalido
+	ecall
+	j done
+mdc:
+	rem t3, t0, t1
+	beqz t3, printa_mdc 
+	mv t0, t1
+	mv t1, t3
+	bnez t3, mdc
+printa_mdc:
+	li a7, 1
+	mv a0, t1
+	ecall
+	li a7, 4
+	la a0, str
+	ecall
+	jr ra
+mmc:
+	mul t2, s5, s4
+	div t2, t2, t1
+	j printa_mmc
+	
+printa_mmc:
+	li a7, 1
+	mv a0, t2
+	ecall
+	li a7, 4
+	la a0, str
+	ecall
+done:

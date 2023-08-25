@@ -1,0 +1,88 @@
+.data
+
+sim:
+	.string "sim\n"
+nao:
+	.string "nao\n"
+invalido:
+	.string "Entrada invalida.\n"
+	
+.text
+
+main:
+	addi s1, zero, 1 #o s1 vi valer 1 e o s2 vai valer 0 e ft4 = 0.00 o ft2 no comeco vale 0.0
+	addi s2, zero, 2
+	
+	li a7, 5
+	ecall
+	mv s3, a0
+	
+	fcvt.s.w ft0, s3 # o numero que foi lido mas em float
+	fcvt.s.w ft1, s2 # o dois só q em float
+	fcvt.s.w ft2, s1 # o 1 só q em float
+	fcvt.s.w ft5, zero # o 0 só q em float
+			 #  o ft3 é uma variavel auxiliar
+			 
+	feq.s t1, ft0, ft1 # se ft0(numero digitado) for igual a ft1(2)
+	beq t1, s1, eprimo # ja vai pro eprimo
+	
+	feq.s t1, ft0, ft2 # se ft0(numero digitado) for igual a ft2(1)
+	beq t1, s1, nnprimo # ja vai pro eprimo
+	
+	
+	fle.s t1, ft0, ft5 #se o numero diitado for menor ou igual a zero, vai pro invalido
+	beq t1, s1, naopode
+
+	jal loop          # no mais, comeca o loop
+
+
+loop:
+	
+	fdiv.s ft3, ft0, ft1 #divide a entrada por 2 e armazena em ft3
+	div t0, s3, s2
+	
+	fcvt.s.w ft4, t0 #converte o inteiro em float novamente
+	
+	fsub.s ft3, ft3, ft4 
+	
+	feq.s t0, ft3, ft5
+	bnez t0, nnprimo
+	
+	feq.s t0, ft3, ft5 #se forem diferentes vai setar 0 em t0
+	beqz t0, condicao
+	
+condicao:
+	addi s3, s3, -1
+	beq s2, s3, eprimo
+	addi s3, s3, 1
+	
+	addi s2, s2, 1
+	fadd.s ft1, ft1, ft2 
+	jr ra
+	
+nnprimo:
+	li a7, 4
+	la a0, nao
+	ecall
+	j done
+	
+eprimo:
+
+	li a7, 4
+	la a0, sim
+	ecall
+	j done
+	
+naopode:
+	li a7, 4
+	la a0, invalido
+	ecall
+	j done
+
+done:
+
+
+
+
+	
+	
