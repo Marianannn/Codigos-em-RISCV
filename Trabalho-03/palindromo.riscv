@@ -1,0 +1,66 @@
+.data
+palavra:
+	.space 1024
+str:
+	.string "\n"
+.text
+
+
+main:
+	li a7, 5
+	ecall
+	
+	mv t1, a0
+	
+	mv t2, t1
+	addi t1, t1, 2
+	
+	la a0, palavra
+	li a7, 8
+	li a1, 1024
+	ecall
+	
+	mv s1, a0
+	mv s4, s1
+	
+	addi t3, t3, 2 # o tamanho real da palavra dividido por 2
+	div t3, t2, t3 #valor inteiro da palavra sobre 2 
+	
+	addi t2, t2, -1 # tamanho da palavra que vai ser diminuido
+	add t4, s4, t2
+	
+	li t0, 0 # contador inicializado com 0
+loop:
+	
+	lb s2, 0(s1)
+	lb s3, 0(t4)
+
+	beq s2, s3, igual
+	
+	li a7, 1
+	li a0, 0
+	ecall
+
+	bne s2, s3, done
+igual:
+	beq t0, t3, palindromo
+	
+	addi s1, s1, 1
+	addi t4, t4, -1
+	
+	addi t0, t0, 1
+	ble t0, t3, loop
+	
+palindromo:
+	li a7, 1
+	li a0, 1
+	ecall
+
+done:	
+	li a7, 4
+	la a0, str
+	ecall
+
+
+	
+	
