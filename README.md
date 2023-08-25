@@ -8,7 +8,7 @@ Aqui eu só reuni os códigos feitos por mim na matéria Fundamentos da Arquitet
 ### Dicas para mandar arquivo no MOJ
 > Na hora de criar um arquivo, colocar a extensão **.riscv** no final
 >
-> **Não esquecer** de colocar **\n** nos prints
+> **Não esquecer** de colocar **\n** ao final de cada print
 >
 > Checar se a saída requerida possui **ponto final ou não**
 >
