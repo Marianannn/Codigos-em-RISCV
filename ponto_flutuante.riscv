@@ -1,0 +1,55 @@
+.data
+    num:    .single 123.45   # Insira o número float desejado aqui
+
+.text
+.globl main
+main:
+    # Carrega o número float na registrador de ponto flutuante f0
+    flw     f0, num, t3
+
+    # Extrai o sinal do número
+    fcvt.wu.d   a0, f0    # Converte o número float para inteiro sem sinal
+    li          a1, 31    # Posição do bit de sinal
+    srl         a0, a0, a1   # Desloca o bit de sinal para a posição mais baixa
+    andi        a2, a0, 1    # Extrai o bit de sinal
+
+    # Extrai o expoente do número
+    fcvt.wu.d   a0, f0    # Converte o número float para inteiro sem sinal
+    li          a1, 23    # Tamanho do campo de bits do expoente
+    srli        a0, a0, 23   # Desloca o número para a direita, alinhando o campo de bits do expoente
+    andi        a1, a0, 0xFF # Extrai o campo de bits do expoente
+
+    # Extrai a mantissa do número
+    fcvt.wu.d   a0, f0    # Converte o número float para inteiro sem sinal
+    li          a1, 0x007FFFFF   # Máscara para a mantissa
+    and         a1, a0, a1       # Aplica a máscara
+
+    # Imprime os resultados
+    la          a0, format
+    li          a7, 4            # Chamada do sistema para imprimir string
+    ecall
+
+    # Imprime o sinal
+    la          a0, sign
+    li          a7, 4
+    ecall
+
+    # Imprime o expoente
+    la          a0, exponent
+    li          a7, 4
+    ecall
+
+    # Imprime a mantissa
+    la          a0, mantissa
+    li          a7, 4
+    ecall
+
+    # Termina o programa
+    li          a7, 10           # Chamada do sistema para sair
+    ecall
+
+.data
+    format:     .asciiz "Número: %.2f\n"
+    sign:       .asciiz "Sinal: %u\n"
+    exponent:   .asciiz "Expoente: %u\n"
+    mantissa:   .asciiz "Mantissa: %u\n"

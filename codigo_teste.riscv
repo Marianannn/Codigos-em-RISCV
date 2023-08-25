@@ -1,0 +1,19 @@
+.data
+    array: .word 1, 2, 3, 4, 5    # Array de 5 palavras (20 bytes)
+
+.text
+    la a0, array                 # Endereço base do array
+
+    # Carregar um valor do array
+    lw a2, 0(a0)                 # Carrega o valor no endereço (a0 + 0) para a2
+
+    # Realizar alguma operação com o valor carregado
+    addi a3, a3, 10              # Adiciona 10 ao valor carregado
+
+    # Armazenar o valor de volta no array
+    sw a3, 0(a0)                 # Armazena o valor em a2 no endereço (a0 + 0)
+
+    # Fim do programa
+    li a7, 10                    # Syscall exit
+    ecall
+
