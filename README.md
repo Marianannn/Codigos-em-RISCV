@@ -41,3 +41,12 @@ Aqui eu só reuni os códigos feitos por mim na matéria Fundamentos da Arquitet
 ## Trabalho Extra 02
 
 **[Base 32](https://github.com/Marianannn/Codigos-em-RISCV/blob/main/Trabalho-extra-02/trab_extra_2.riscv)** !!!
+
+| Atividade                | Local        | Início das Atividades | Fim das Atividades | Responsáveis     | Início da Revisão    | Fim da Revisão      | Revisores |
+|--------------------------|--------------|-----------------------|--------------------|------------------|----------------------|---------------------|-----------|
+| Planejamento do projeto  | Google Meets | 2024-04-02            | 2024-04-06         | Mariana e Lucas  | 2024-04-06           | 2024-04-06          | Bruna     |
+| Planejamento da equipe   | Google Meets | 2024-04-02            | 2024-04-06         | todos            | 2024-04-06           | 2024-04-06          | Daniela   |
+| Lista de sites avaliados | Google Meets | 2024-04-02            | 2024-04-06         | todos            | 2024-04-06           | 2024-04-06          | Genilson  |
+| Seleção de site p/ projeto | Google Meets | 2024-04-02          | 2024-04-06         | todos            | 2024-04-06           | 2024-04-06          | Lucas     |
+| Ferramentas do projeto   | Google Meets | 2024-04-02            | 2024-04-06         | Lucas e Daniela  | 2024-04-06           | 2024-04-06          | Mariana   |
+| Processo de design   | Google Meets | 2024-04-02            | 2024-04-06         | Lucas e Daniela  | 2024-04-06           | 2024-04-06          | Mariana   |
